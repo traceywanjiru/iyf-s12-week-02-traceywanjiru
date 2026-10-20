@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Daily Challenges</title>
+  <style>
+    
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    }
+
+    body {
+      background-color: #0d1117;
+      color: #e6edf3;
+      line-height: 1.6;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 40px 20px;
+    }
+
+    h1.page-title {
+      font-size: 2rem;
+      border-bottom: 1px solid #30363d;
+      padding-bottom: 12px;
+      margin-bottom: 32px;
+    }
+
+    .section {
+      margin-bottom: 56px;
+    }
+
+    .section-header {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 1.3rem;
+      margin-bottom: 20px;
+    }
+
+    .status-dot {
+      width: 14px;
+      height: 14px;
+      border-radius: 50%;
+      display: inline-block;
+    }
+
+    .status-green { background-color: #2ea043; }
+    .status-yellow { background-color: #d29922; }
+
+    .button-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+      align-items: center;
+      background-color: #161b22;
+      padding: 24px;
+      border-radius: 8px;
+      border: 1px solid #30363d;
+    }
+
+    .btn {
+      padding: 10px 20px;
+      font-size: 14px;
+      font-weight: 600;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      border: 1px solid transparent;
+      outline: none;
+      text-decoration: none;
+      display: inline-block;
+    }
+
+    .btn-primary {
+      background-color: #238636;
+      color: #ffffff;
+    }
+    .btn-primary:hover {
+      background-color: #2ea043;
+    }
+
+    .btn-secondary {
+      background-color: transparent;
+      color: #c9d1d9;
+      border-color: #30363d;
+    }
+    .btn-secondary:hover {
+      background-color: #21262d;
+      border-color: #8b949e;
+      color: #ffffff;
+    }
+
+    .btn-danger {
+      background-color: #da3633;
+      color: #ffffff;
+    }
+    .btn-danger:hover {
+      background-color: #f85149;
+    }
+
+    .btn-disabled {
+      background-color: #21262d;
+      color: #484f58;
+      border-color: #30363d;
+      cursor: not-allowed;
+      opacity: 0.6;
+    }
+    .btn-disabled:hover {
+      background-color: #21262d;
+      color: #484f58;
+    }
+
+    .card {
+      width: 100%;
+      max-width: 340px;
+      background-color: #161b22;
+      border: 1px solid #30363d;
+      border-radius: 12px;
+      overflow: hidden;
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 24px -10px rgba(0, 0, 0, 0.6), 0 0 12px rgba(46, 160, 67, 0.2);
+    }
+
+    .card-image {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+      display: block;
+    }
+
+    .card-body {
+      padding: 20px;
+    }
+
+    .card-tags {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 12px;
+      flex-wrap: wrap;
+    }
+
+    .tag {
+      background-color: #1f2937;
+      color: #58a6ff;
+      font-size: 12px;
+      font-weight: 500;
+      padding: 4px 10px;
+      border-radius: 20px;
+      border: 1px solid rgba(56, 139, 253, 0.2);
+    }
+
+    .card-title {
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: #f0f6fc;
+      margin-bottom: 8px;
+    }
+
+    .card-description {
+      font-size: 14px;
+      color: #8b949e;
+      margin-bottom: 20px;
+    }
+
+    .card .btn-primary {
+      width: 100%;
+      text-align: center;
+    }
+
+    .hero-container {
+      border: 1px solid #30363d;
+      border-radius: 12px;
+      overflow: hidden;
+    }
+
+    .hero-section {
+      position: relative;
+      min-height: 100vh; 
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      background-image: url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=1600&q=80');
+      background-size: cover;
+      background-position: center;
+      padding: 20px;
+    }
+
+    .hero-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(13, 17, 23, 0.75);
+      z-index: 1;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 650px;
+    }
+
+    .hero-title {
+      font-size: clamp(2rem, 5vw, 3.5rem); 
+      font-weight: 800;
+      margin-bottom: 16px;
+      color: #ffffff;
+      line-height: 1.2;
+    }
+
+    .hero-subtitle {
+      font-size: clamp(1rem, 2.5vw, 1.25rem);
+      color: #c9d1d9;
+      margin-bottom: 28px;
+    }
+
+    .form-wrapper {
+      background-color: #161b22;
+      border: 1px solid #30363d;
+      border-radius: 12px;
+      padding: 28px;
+      max-width: 500px;
+    }
+
+    .contact-form {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .form-group label {
+      font-size: 14px;
+      font-weight: 500;
+      color: #c9d1d9;
+    }
+
+    .form-control {
+      width: 100%;
+      padding: 10px 14px;
+      background-color: #0d1117;
+      border: 1px solid #30363d;
+      border-radius: 6px;
+      color: #f0f6fc;
+      font-size: 14px;
+      transition: border-color 0.2s ease, box-shadow 0.2s ease;
+      outline: none;
+    }
+
+    .form-control:focus {
+      border-color: #58a6ff;
+      box-shadow: 0 0 0 3px rgba(88, 166, 255, 0.3);
+    }
+
+    .form-control:invalid:not(:placeholder-shown) {
+      border-color: #f85149;
+      box-shadow: 0 0 0 3px rgba(248, 81, 73, 0.2);
+    }
+
+    textarea.form-control {
+      resize: vertical;
+      min-height: 100px;
+    }
+
+    @media (max-width: 600px) {
+      .form-wrapper {
+        padding: 20px;
+      }
+    }
+
+    .site-footer {
+      background-color: #161b22;
+      border: 1px solid #30363d;
+      border-radius: 12px;
+      padding: 40px 24px 20px 24px;
+      margin-top: 20px;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 32px;
+      margin-bottom: 40px;
+    }
+
+    .footer-col h4 {
+      color: #f0f6fc;
+      font-size: 16px;
+      margin-bottom: 16px;
+    }
+
+    .footer-col ul {
+      list-style: none;
+    }
+
+    .footer-col ul li {
+      margin-bottom: 8px;
+    }
+
+    .footer-col ul li a {
+      color: #8b949e;
+      text-decoration: none;
+      font-size: 14px;
+      transition: color 0.2s ease;
+    }
+
+    .footer-col ul li a:hover {
+      color: #58a6ff;
+    }
+
+    .social-links {
+      display: flex;
+      gap: 12px;
+    }
+
+    .social-icon {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 36px;
+      height: 36px;
+      background-color: #21262d;
+      border: 1px solid #30363d;
+      border-radius: 50%;
+      text-decoration: none;
+      font-size: 16px;
+      transition: background-color 0.2s ease;
+    }
+
+    .social-icon:hover {
+      background-color: #30363d;
+    }
+
+    /* Copyright Row */
+    .footer-bottom {
+      border-top: 1px solid #30363d;
+      padding-top: 20px;
+      text-align: center;
+      font-size: 14px;
+      color: #8b949e;
+    }
+
+    @media (max-width: 900px) {
+      .footer-grid {
+        grid-template-columns: repeat(2, 1fr); 
+      }
+    }
+
+    @media (max-width: 550px) {
+      .footer-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <h1 class="page-title">Daily Challenges</h1>
+
+    <div class="section">
+      <h2 class="section-header">
+        Day 1: Button Styles
+        <span class="status-dot status-green"></span>
+      </h2>
+      <div class="button-group">
+        <button class="btn btn-primary">Primary</button>
+        <button class="btn btn-secondary">Secondary</button>
+        <button class="btn btn-danger">Danger</button>
+        <button class="btn btn-disabled" disabled>Disabled</button>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2 class="section-header">
+        Day 2: Card Component
+        <span class="status-dot status-green"></span>
+      </h2>
+      <div class="card">
+        <img class="card-image" src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=600&q=80" alt="Card Header">
+        <div class="card-body">
+          <div class="card-tags">
+            <span class="tag">Web Dev</span>
+            <span class="tag">CSS</span>
+          </div>
+          <h3 class="card-title">Reusable Card</h3>
+          <p class="card-description">This card component includes an image top, tag categories, titles, description, and interactive hover shadow states.</p>
+          <button class="btn btn-primary">Get Started</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2 class="section-header">
+        Day 3: Hero Section
+        <span class="status-dot status-yellow"></span>
+      </h2>
+      <div class="hero-container">
+        <section class="hero-section">
+          <div class="hero-overlay"></div>
+          <div class="hero-content">
+            <h1 class="hero-title">Build Responsive Modern Websites</h1>
+            <p class="hero-subtitle">Learn HTML & CSS by tackling daily practical coding challenges designed to level up your front-end skills.</p>
+            <a href="#day4" class="btn btn-primary" style="padding: 12px 28px; font-size: 16px;">Explore Course</a>
+          </div>
+        </section>
+      </div>
+    </div>
+
+    <div class="section" id="day4">
+      <h2 class="section-header">
+        Day 4: Form Styling
+        <span class="status-dot status-yellow"></span>
+      </h2>
+      <div class="form-wrapper">
+        <form class="contact-form" action="#" method="POST" onsubmit="event.preventDefault();">
+          <div class="form-group">
+            <label for="name">Full Name *</label>
+            <input type="text" id="name" class="form-control" placeholder="John Doe" required />
+          </div>
+
+          <div class="form-group">
+            <label for="email">Email Address *</label>
+            <input type="email" id="email" class="form-control" placeholder="john@example.com" required />
+          </div>
+
+          <div class="form-group">
+            <label for="message">Message *</label>
+            <textarea id="message" class="form-control" placeholder="Write your message here..." required></textarea>
+          </div>
+
+          <button type="submit" class="btn btn-primary">Send Message</button>
+        </form>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2 class="section-header">
+        Day 5: Footer Design
+        <span class="status-dot status-yellow"></span>
+      </h2>
+      <footer class="site-footer">
+        <div class="footer-grid">
+          <div class="footer-col">
+            <h4>About Us</h4>
+            <ul>
+              <li><a href="#">Our Story</a></li>
+              <li><a href="#">Team</a></li>
+              <li><a href="#">Careers</a></li>
+            </ul>
+          </div>
+
+          <div class="footer-col">
+            <h4>Resources</h4>
+            <ul>
+              <li><a href="#">Documentation</a></li>
+              <li><a href="#">Tutorials</a></li>
+              <li><a href="#">Blog</a></li>
+            </ul>
+          </div>
+
+          <div class="footer-col">
+            <h4>Support</h4>
+            <ul>
+              <li><a href="#">Help Center</a></li>
+              <li><a href="#">Contact Us</a></li>
+              <li><a href="#">Privacy Policy</a></li>
+            </ul>
+          </div>
+
+          <div class="footer-col">
+            <h4>Follow Us</h4>
+            <div class="social-links">
+              <a href="#" class="social-icon" title="Twitter">🌐</a>
+              <a href="#" class="social-icon" title="GitHub">💻</a>
+              <a href="#" class="social-icon" title="LinkedIn">💼</a>
+              <a href="#" class="social-icon" title="Instagram">📷</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="footer-bottom">
+          <p>&copy; 2026 Daily Challenges. All rights reserved.</p>
+        </div>
+      </footer>
+    </div>
+
+  </div>
+
+</body>
+</html>

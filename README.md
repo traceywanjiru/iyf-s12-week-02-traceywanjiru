@@ -13,10 +13,17 @@ A full portfolio site of myself. Including my personal information and extra det
 - CSS
 
 ## Lessons Learned
-What did you learn while building this project?
+- I learned how to use Flexbox and CSS Grid to structure pages and align elements easily.
+- I learned how to use responsive design
 
 ## Challenges Faced
-What problems did you encounter and how did you solve them?
+*Mobile layout breakages*
+- Problem: Content looks great on desktop but gets squished or overflows on mobile.
+- Solution: Design mobile-first and use flexible units like percentages or ```rem.```
+
+*Broken image links*
+- Problem: Images disappear when you move files or upload to GitHub.
+- Solution: Keep your images in a dedicated folder and use clean relative paths.
 
 ## Live Demo
-
+https://traceywanjiru.github.io/iyf-s12-week-02-traceywanjiru/

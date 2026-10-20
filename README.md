@@ -1,46 +1,37 @@
 # Week 02: CSS Mastery - Responsive Portfolio
 
 ## Author
+
 - **Name:**Tracey Wanjiru
 - **GitHub:** [@traceywanjiru](https://github.com/traceywanjiru)
-- **Date:** Month Day, Year
+- **Date:** October 20, 2026
 
 ## Project Description
-Brief description of what you built and why.
+
+A full portfolio site of myself. Including my personal information and extra details.
 
 ## Technologies Used
-- HTML5
-- CSS3
-- JavaScript
-- (list all technologies)
 
-## Features
-- Feature 1
-- Feature 2
-- Feature 3
-
-## How to Run
-1. Clone this repository
-2. Open `index.html` in your browser
-   OR
-   Run `npm install` then `npm start`
+- HTML
+- CSS
 
 ## Lessons Learned
-What did you learn while building this project?
+
+- I learned how to use Flexbox and CSS Grid to structure pages and align elements easily.
+- I learned how to use responsive design
 
 ## Challenges Faced
-What problems did you encounter and how did you solve them?
 
-## Collaboration (required in Weeks 0, 3 and 7; omit on other solo weeks)
-- **Team / partner:** [@partner](https://github.com/partner)
-- **Shared repo:** https://github.com/...
-- **PR I opened:** https://github.com/.../pull/N
-- **PR I reviewed:** https://github.com/.../pull/N
-- **Merge conflict I resolved** (Weeks 0 and 3): https://github.com/.../pull/N
-(Collaboration happens outside this repository. It is marked **only** from these links — the marker does not search the shared repo for your work. Every link must point to something authored by your own GitHub account.)
+_Mobile layout breakages_
 
-## Screenshots (optional)
-![Screenshot description](path/to/screenshot.png)
+- Problem: Content looks great on desktop but gets squished or overflows on mobile.
+- Solution: Design mobile-first and use flexible units like percentages or `rem.`
 
-## Live Demo (if deployed)
-[View Live Demo](https://your-deployed-url.com)
+_Broken image links_
+
+- Problem: Images disappear when you move files or upload to GitHub.
+- Solution: Keep your images in a dedicated folder and use clean relative paths.
+
+## Live Demo
+
+https://traceywanjiru.github.io/iyf-s12-week-02-traceywanjiru/
